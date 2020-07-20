@@ -17,9 +17,8 @@ class Form extends React.Component {
     changeHandler = (e) => {
         this.setState({[e.target.name]: e.target.value })
     }
-
     submitHadler = (e) => {
-      e.preventDefault()
+      e.preventDefault();
       console.log(this.state)
       axios.post('https://academlo-api-users.herokuapp.com/users', this.state)
         .then(response =>{
@@ -28,7 +27,10 @@ class Form extends React.Component {
         .catch(error => {
             console.log(error);
         })
-
+        this.setState({ name: '',
+        email: '',
+        lastname: '',
+        password: ''})
     }
 
 

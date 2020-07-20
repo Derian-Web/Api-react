@@ -11,11 +11,18 @@ class App extends React.Component {
       usuarios: []
     }
   }
-  deletUsers = async (id) => {
-    const url = 'https://academlo-api-users.herokuapp.com/user/2'
-    await axios.delete(url)
-    alert('se borro exitosamente')
+  deletUsers = async  (id) => {
+    const url = 'https://academlo-api-users.herokuapp.com/user/' + id;
+    await  axios.delete(url)
+    console.log(id)
+    this.getUsers();
 
+  }
+   getUsers = async () =>{
+    const url = 'https://academlo-api-users.herokuapp.com/users';
+    const rest = await axios.get(url);
+    console.log(rest)
+    this.setState({usuarios: rest.data.data})
   }
    async componentDidMount() {
     const url = 'https://academlo-api-users.herokuapp.com/users';
@@ -29,12 +36,14 @@ class App extends React.Component {
       <div className="App">
         <h1>Api</h1>
         <Form />
-        <button onClick={this.deletUsers}>Borra usuario</button>
         <div className="col-md-8">
                     <ul className="list-group">
                         {
                             this.state.usuarios.map(user => (
-                                <li className="list-group-item list-group-item-action" key={user.id}>
+                                <li className="list-group-item list-group-item-action" 
+                                  key={user.id}
+                                  onDoubleClick={() => this.deletUsers(user.id)}
+                                >
                                     {user.name}
                                 </li>
                             ))
