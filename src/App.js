@@ -35,9 +35,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Api</h1>
-        <Form />
-        <div className="col-md-8">
-                    <ul className="list-group">
+        <div className="row m-0">
+          <div className="col-8">
+            <ul className="list-group">
                         {
                             this.state.usuarios.map(user => (
                                 <li className="list-group-item list-group-item-action" 
@@ -49,7 +49,11 @@ class App extends React.Component {
                             ))
                         }
                     </ul>
-                </div>
+          </div>
+          <div className="col-md-4">
+            <Form />
+            </div>
+        </div>
       </div>
     );
   }

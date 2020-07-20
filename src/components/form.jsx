@@ -39,47 +39,43 @@ class Form extends React.Component {
     return (
         <form onSubmit={this.submitHadler}>
         <div class="row m-0">
-          <div class="col-2">
+          <div class="col">
+            <h2>Agregar un nuevo usuario</h2>
             <input 
               type="text" 
-              class="form-control" 
+              className="form-control" 
               placeholder="First name" 
               name="name" 
               value={name} 
               onChange={this.changeHandler} 
             />
-          </div>
-          <div class="col-2">
-            <input 
+            <br></br>
+             <input 
               type="text" 
-              class="form-control block" 
+              className="form-control block mb-3" 
               placeholder="Last name" 
               name="lastname" 
               value={lastname}
               onChange={this.changeHandler} 
              />
-          </div>
-          <div class="col-2">
-            <input 
+              <input 
               type="email" 
-              class="form-control block" 
+              className="form-control block mb-3" 
               placeholder="email" 
               name="email" 
               value={email}
               onChange={this.changeHandler} 
             />
-          </div>
-          <div class="col-2">
             <input 
               type="password" 
-              class="form-control block" 
+              className="form-control block mb-3" 
               placeholder="contraseña" 
               name="password" 
               value={password}
               onChange={this.changeHandler} 
             />
+            <button type="submit" className="btn btn-primary btn-block">Enviar</button> 
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button> 
         </div>
       </form>
     );
